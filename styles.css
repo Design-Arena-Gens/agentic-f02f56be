@@ -1,0 +1,760 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.presentation {
+    width: 100%;
+    max-width: 1200px;
+    height: 700px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    padding: 60px;
+    overflow-y: auto;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.slide.prev {
+    transform: translateX(-100%);
+}
+
+.content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content.center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: #667eea;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    border-bottom: 4px solid #667eea;
+    padding-bottom: 15px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 2rem;
+    color: #764ba2;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.author {
+    font-size: 1.2rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Slide 2: Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.stat-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Slide 3: Principles */
+.principles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.principle-item {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 5px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.principle-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.principle-item h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.principle-item p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Slide 4: Two Column Layout */
+.two-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.pattern-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.pattern-box:hover {
+    border-color: #667eea;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.pattern-box h3 {
+    color: #667eea;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.pattern-box p {
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.pattern-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.pattern-box ul li {
+    color: #666;
+    padding: 5px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.pattern-box ul li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+}
+
+/* Slide 5: Information Architecture */
+.ia-section h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #667eea;
+}
+
+.hierarchy-visual {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.level {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.node {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.node.small {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+
+.ia-tips {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.tip {
+    background: #fff3cd;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #ffc107;
+}
+
+.tip strong {
+    color: #856404;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Slide 6: Design Grid */
+.design-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.design-principle {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+}
+
+.design-principle h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.example {
+    margin-top: 15px;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.btn-secondary {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.icon-example {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.icon-label {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    font-size: 1rem;
+}
+
+/* Slide 7: Mobile Section */
+.mobile-section {
+    display: grid;
+    gap: 30px;
+}
+
+.mobile-principles h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.responsive-tip {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.responsive-tip h3 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.responsive-tip p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.breakpoints {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.bp {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* Slide 8: Testing Methods */
+.testing-methods {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.method {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    border-top: 5px solid #667eea;
+}
+
+.method h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.method p {
+    color: #555;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.method ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.method ul li {
+    color: #666;
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.method ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Slide 9: Accessibility Grid */
+.accessibility-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.a11y-item {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+}
+
+.a11y-item h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.a11y-item ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.a11y-item ul li {
+    color: #666;
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.a11y-item ul li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-size: 1.5rem;
+}
+
+/* Slide 10: Mistakes List */
+.mistakes-list {
+    display: grid;
+    gap: 20px;
+}
+
+.mistake {
+    display: flex;
+    align-items: flex-start;
+    background: #fff3f3;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #dc3545;
+}
+
+.mistake-icon {
+    font-size: 2rem;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.mistake-content h3 {
+    color: #dc3545;
+    margin-bottom: 8px;
+}
+
+.mistake-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Slide 11: Quick Wins */
+.quick-wins {
+    display: grid;
+    gap: 20px;
+}
+
+.win-item {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.win-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+}
+
+.win-number {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-right: 25px;
+    flex-shrink: 0;
+}
+
+.win-text h3 {
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.win-text p {
+    color: #666;
+}
+
+/* Slide 12: Takeaways */
+.takeaways {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.takeaway-box {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 3px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.takeaway-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.takeaway-box h3 {
+    color: #667eea;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.takeaway-box p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.final-message {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.final-message h2 {
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.final-message p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.control-btn {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.slide-counter {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    max-width: 1200px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: white;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .presentation {
+        height: 600px;
+    }
+
+    .slide {
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .stats-grid,
+    .principles,
+    .two-column,
+    .design-grid,
+    .testing-methods,
+    .accessibility-grid,
+    .takeaways {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .presentation {
+        height: 500px;
+        border-radius: 10px;
+    }
+
+    .slide {
+        padding: 30px 20px;
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .control-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .slide-counter {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .icon {
+        font-size: 2rem;
+    }
+}
+
+/* Scrollbar Styling */
+.slide::-webkit-scrollbar {
+    width: 8px;
+}
+
+.slide::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.slide::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+.slide::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
